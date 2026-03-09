@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Anime.BLL\Anime.BLL.csproj" />
   </ItemGroup>
 
 </Project>

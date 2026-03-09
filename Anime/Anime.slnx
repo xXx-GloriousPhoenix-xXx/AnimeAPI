@@ -1,5 +1,9 @@
 <Solution>
-  <Project Path="Anime.API/Anime.API.csproj" />
-  <Project Path="Anime.BLL/Anime.BLL.csproj" />
+  <Project Path="Anime.API/Anime.API.csproj">
+    <BuildDependency Project="Anime.BLL/Anime.BLL.csproj" />
+  </Project>
+  <Project Path="Anime.BLL/Anime.BLL.csproj">
+    <BuildDependency Project="Anime.DAL/Anime.DAL.csproj" />
+  </Project>
   <Project Path="Anime.DAL/Anime.DAL.csproj" />
 </Solution>
