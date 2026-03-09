@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="Anime.API/Anime.API.csproj" />
+  <Project Path="Anime.BLL/Anime.BLL.csproj" />
+  <Project Path="Anime.DAL/Anime.DAL.csproj" />
 </Solution>

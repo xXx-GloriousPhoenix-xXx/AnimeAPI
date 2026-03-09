@@ -2,6 +2,7 @@
 using Anime.DAL.Entity;
 using Anime.DAL.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Anime.DAL.Repository.Implementation;
 
@@ -16,9 +17,28 @@ public class BaseRepository<T>(AnimeDbContext context) : IBaseRepository<T> wher
         _dbSet.Add(entity);
     }
 
+    public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null, CancellationToken ct = default)
+    {
+        if (predicate is null)
+        {
+            return await _dbSet.CountAsync(ct);
+        }
+        return await _dbSet.CountAsync(predicate, ct);
+    }
+
     public void Delete(T entity)
     {
         _dbSet.Remove(entity);
+    }
+
+    public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default)
+    {
+        return await _dbSet.AnyAsync(predicate, ct);
+    }
+
+    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default)
+    {
+        return await _dbSet.Where(predicate).ToListAsync(ct);
     }
 
     public async Task<IEnumerable<T>> GetAllAsync(CancellationToken ct = default)
