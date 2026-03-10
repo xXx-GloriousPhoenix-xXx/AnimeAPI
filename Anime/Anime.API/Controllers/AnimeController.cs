@@ -17,7 +17,7 @@ public class AnimeController(IAnimeService service) : ControllerBase
         return Ok(animeList);
     }
 
-    [HttpGet]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id, CancellationToken ct = default)
     {
         var anime = await _service.GetByIdAsync(id, ct);
@@ -41,7 +41,7 @@ public class AnimeController(IAnimeService service) : ControllerBase
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromRoute] Guid id, CancellationToken ct = default)
     {
-        var result = await _service.DeleteAsync(id, ct);
-        return Ok(result);
+        await _service.DeleteAsync(id, ct);
+        return Ok();
     }
 }

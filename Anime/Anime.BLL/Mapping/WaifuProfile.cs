@@ -7,6 +7,9 @@ public class WaifuProfile : Profile
 {
     public WaifuProfile()
     {
-        //CreateMap<Waifu, GetFullWaifuDTO>()
+        CreateMap<CreateWaifuWithAnimeIdDTO, Waifu>();
+        CreateMap<CreateWaifuWithAnimeNameDTO, Waifu>();
+        CreateMap<UpdateWaifuDTO, Waifu>();
+        CreateMap<Waifu, GetFullWaifuDTO>();
     }
 }

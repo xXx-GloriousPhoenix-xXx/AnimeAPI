@@ -5,7 +5,7 @@ using Anime.BLL.DTO.Waifu;
 
 namespace Anime.API.Controllers;
 
-[Route("api/anime")]
+[Route("api/waifu")]
 [ApiController]
 public class WaifuController(IWaifuService service) : ControllerBase
 {
@@ -18,21 +18,21 @@ public class WaifuController(IWaifuService service) : ControllerBase
         return Ok(waifuList);
     }
 
-    [HttpGet]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id, CancellationToken ct = default)
     {
         var waifu = await _service.GetByIdAsync(id, ct);
         return Ok(waifu);
     }
 
-    [HttpPost]
+    [HttpPost("id")]
     public async Task<IActionResult> AddWithAnimeIdAsync([FromForm] CreateWaifuWithAnimeIdDTO dto, CancellationToken ct = default)
     {
         var waifu = await _service.AddWithAnimeIdAsync(dto, ct);
         return Ok(waifu);
     }
 
-    [HttpPost]
+    [HttpPost("name")]
     public async Task<IActionResult> AddWithAnimeNameAsync([FromForm] CreateWaifuWithAnimeNameDTO dto, CancellationToken ct = default)
     {
         var waifu = await _service.AddWithAnimeNameAsync(dto, ct);
@@ -49,7 +49,7 @@ public class WaifuController(IWaifuService service) : ControllerBase
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromRoute] Guid id, CancellationToken ct = default)
     {
-        var result = await _service.DeleteAsync(id, ct);
-        return Ok(result);
+        await _service.DeleteAsync(id, ct);
+        return Ok();
     }
 }
