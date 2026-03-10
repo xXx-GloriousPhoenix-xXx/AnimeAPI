@@ -11,9 +11,12 @@ public class AnimeController(IAnimeService service) : ControllerBase
     private readonly IAnimeService _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAllAnimeAsync(CancellationToken ct = default)
+    public async Task<IActionResult> GetAllAsync(
+        [FromQuery] int pageSize = 10,
+        [FromQuery] int pageNum = 1,
+        CancellationToken ct = default)
     {
-        var animeList = await _service.GetAllAsync(ct);
+        var animeList = await _service.GetAllAsync(pageSize, pageNum, ct);
         return Ok(animeList);
     }
 
@@ -31,17 +34,27 @@ public class AnimeController(IAnimeService service) : ControllerBase
         return Ok(anime);
     }
 
-    [HttpPut]
+    [HttpPatch("{id:guid}")]
     public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromForm] UpdateAnimeDTO dto, CancellationToken ct = default)
     {
         var anime = await _service.UpdateAsync(id, dto, ct);
         return Ok(anime);
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id, CancellationToken ct = default)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteAsync(
+        [FromRoute] Guid id,
+        [FromQuery] bool isSoft = true,
+        CancellationToken ct = default)
     {
-        await _service.DeleteAsync(id, ct);
+        if (isSoft)
+        {
+            await _service.SoftDeleteAsync(id, ct);
+        }
+        else
+        {
+            await _service.ForceDeleteAsync(id, ct);
+        }
         return Ok();
     }
 }

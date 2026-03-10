@@ -1,9 +1,9 @@
-﻿namespace Anime.BLL.DTO.Anime;
+﻿using Anime.BLL.DTO.Extra;
+namespace Anime.BLL.DTO.Anime;
 
-public abstract class BaseAnimeDTO
+public abstract class BaseAnimeDTO : BaseDTO
 {
-    public string Title { get; set; } = string.Empty;
-    public DateOnly ReleaseDate { get; set; }
-    public int EpisodeCount { get; set; }
+    public virtual string? Title { get; set; }
+    public virtual DateOnly? ReleaseDate { get; set; }
+    public virtual int? EpisodeCount { get; set; }
 }
- 

@@ -50,9 +50,42 @@ public class BaseRepository<T>(AnimeDbContext context) : IBaseRepository<T> wher
     {
         return await _dbSet.FirstOrDefaultAsync(x => x.Id == id, ct);
     }
+    public IQueryable<T> AsQueryable() => _dbSet.AsQueryable();
+
+    public async Task<T?> GetByIdAsync(Guid id, CancellationToken ct = default, params Expression<Func<T, object?>>[] includes)
+    {
+        if (includes == null || includes.Length == 0)
+        {
+            return await GetByIdAsync(id, ct);
+        }
+
+        IQueryable<T> query = _dbSet;
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+
+        return await query.FirstOrDefaultAsync(e => e.Id == id, ct);
+    }
 
     public void Update(T entity)
     {
         _dbSet.Update(entity);
+    }
+
+    public async Task<IEnumerable<T>> GetAllAsync(CancellationToken ct = default, params Expression<Func<T, object?>>[] includes)
+    {
+        if (includes == null || includes.Length == 0)
+        {
+            return await GetAllAsync(ct);
+        }
+
+        IQueryable<T> query = _dbSet;
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+
+        return await query.ToListAsync(ct);
     }
 }

@@ -15,4 +15,9 @@ public class UnitOfWork(AnimeDbContext context) : IUnitOfWork
 
     public IBaseRepository<Entity.Anime> Animes =>
         _animes ??= new BaseRepository<Entity.Anime>(_context);
+
+    public async Task<int> CompleteAsync(CancellationToken ct = default)
+    {
+        return await _context.SaveChangesAsync(ct);
+    }
 }

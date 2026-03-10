@@ -10,6 +10,8 @@ public class WaifuProfile : Profile
         CreateMap<CreateWaifuWithAnimeIdDTO, Waifu>();
         CreateMap<CreateWaifuWithAnimeNameDTO, Waifu>();
         CreateMap<UpdateWaifuDTO, Waifu>();
-        CreateMap<Waifu, GetFullWaifuDTO>();
+        CreateMap<Waifu, GetWaifuDTO>();
+        CreateMap<Waifu, GetFullWaifuDTO>()
+            .ForMember(dest => dest.AnimeName, opt => opt.MapFrom(a => a.Anime!.Title));
     }
 }

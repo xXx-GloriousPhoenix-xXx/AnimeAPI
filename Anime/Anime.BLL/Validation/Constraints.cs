@@ -1,4 +1,4 @@
-﻿namespace Anime.DAL.Validation;
+﻿namespace Anime.BLL.Validation;
 
 public static class Constraints
 {

@@ -4,6 +4,7 @@ using Anime.BLL.Service.Interface;
 using Anime.DAL.Context;
 using Anime.DAL.Repository.Implementation;
 using Anime.DAL.Repository.Interface;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using System.Reflection;
@@ -11,17 +12,36 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Infrastructure
+// Context
 builder.Services.AddDbContext<AnimeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Repositories
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// Services
 builder.Services.AddScoped<IWaifuService, WaifuService>();
 builder.Services.AddScoped<IAnimeService, AnimeService>();
 
-builder.Services.AddAutoMapper([
-    typeof(WaifuProfile),
-    typeof(AnimeProfile)
-]);
+// Mapping
+//var loggerFactory = LoggerFactory.Create(builder =>
+//{
+//    builder.AddConsole();
+//});
+
+//var config = new MapperConfiguration(cfg =>
+//{
+//    cfg.AddMaps(AppDomain.CurrentDomain.GetAssemblies());
+//}, loggerFactory);
+
+//var mapper = config.CreateMapper();
+
+//builder.Services.AddSingleton(mapper);
+
+builder.Services.AddAutoMapper(cfg => cfg.AddProfiles([
+    new WaifuProfile(),
+    new AnimeProfile()
+]));
 
 builder.Services.AddControllers();
 

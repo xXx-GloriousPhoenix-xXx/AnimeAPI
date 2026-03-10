@@ -7,4 +7,7 @@ public class BaseEntity
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    [Column("is_deleted")]
+    public bool IsDeleted { get; set; } = false;
 }
