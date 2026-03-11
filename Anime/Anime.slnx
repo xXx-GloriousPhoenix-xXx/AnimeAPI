@@ -6,4 +6,5 @@
     <BuildDependency Project="Anime.DAL/Anime.DAL.csproj" />
   </Project>
   <Project Path="Anime.DAL/Anime.DAL.csproj" />
+  <Project Path="Anime.Test/Anime.Test.csproj" Id="90dc8a15-4f92-4890-8174-9f91a62a00f9" />
 </Solution>
