@@ -6,7 +6,7 @@ namespace Anime.DAL.Context;
 public class AnimeDbContext(DbContextOptions<AnimeDbContext> options) : DbContext(options)
 {
     public DbSet<Waifu> Waifus { get; set; }
-    public DbSet<Entity.Anime> Animes { get; set; }
+    public DbSet<Entity.AnimeEntity> Animes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

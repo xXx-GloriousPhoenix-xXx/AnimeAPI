@@ -1,10 +1,8 @@
-﻿using Anime.DAL.Validation;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace Anime.DAL.Entity;
 
 [Table("animes")]
-public class Anime : BaseEntity
+public class AnimeEntity : BaseEntity
 {
     [Column("title")]
     public string Title { get; set; } = string.Empty;

@@ -19,5 +19,5 @@ public class Waifu : BaseEntity
     public Guid AnimeId { get; set; }
 
     [ForeignKey(nameof(AnimeId))]
-    public virtual Anime? Anime { get; set; }
+    public virtual AnimeEntity? Anime { get; set; }
 }

@@ -4,7 +4,7 @@ using Anime.BLL.DTO.Anime;
 
 namespace Anime.API.Controllers;
 
-[Route("api/anime")]
+[Route("api/animes")]
 [ApiController]
 public class AnimeController(IAnimeService service) : ControllerBase
 {
@@ -47,14 +47,21 @@ public class AnimeController(IAnimeService service) : ControllerBase
         [FromQuery] bool isSoft = true,
         CancellationToken ct = default)
     {
-        if (isSoft)
+        try
         {
-            await _service.SoftDeleteAsync(id, ct);
+            if (isSoft)
+            {
+                await _service.SoftDeleteAsync(id, ct);
+            }
+            else
+            {
+                await _service.ForceDeleteAsync(id, ct);
+            }
+            return Ok();
         }
-        else
+        catch (KeyNotFoundException)
         {
-            await _service.ForceDeleteAsync(id, ct);
+            return NotFound();
         }
-        return Ok();
     }
 }

@@ -4,7 +4,7 @@ using Anime.BLL.DTO.Waifu;
 
 namespace Anime.API.Controllers;
 
-[Route("api/waifu")]
+[Route("api/waifus")]
 [ApiController]
 public class WaifuController(IWaifuService service) : ControllerBase
 {

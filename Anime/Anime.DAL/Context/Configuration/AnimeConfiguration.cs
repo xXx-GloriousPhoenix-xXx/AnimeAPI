@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Anime.DAL.Entity;
 
 namespace Anime.DAL.Context.Configuration;
-public class AnimeConfiguration : BaseConfiguration<Entity.Anime>
+public class AnimeConfiguration : BaseConfiguration<Entity.AnimeEntity>
 {
-    public override void Configure(EntityTypeBuilder<Entity.Anime> builder)
+    public override void Configure(EntityTypeBuilder<Entity.AnimeEntity> builder)
     {
         base.Configure(builder);
 

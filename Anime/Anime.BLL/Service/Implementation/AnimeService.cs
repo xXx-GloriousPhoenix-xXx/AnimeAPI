@@ -14,7 +14,7 @@ public class AnimeService(IUnitOfWork unitOfWork, IMapper mapper) : IAnimeServic
 
     public async Task<GetAnimeDTO?> AddAsync(CreateAnimeDTO dto, CancellationToken ct = default)
     {
-        var anime = _mapper.Map<DAL.Entity.Anime>(dto);
+        var anime = _mapper.Map<DAL.Entity.AnimeEntity>(dto);
 
         _unitOfWork.Animes.Add(anime);
         await _unitOfWork.CompleteAsync(ct);
@@ -27,7 +27,7 @@ public class AnimeService(IUnitOfWork unitOfWork, IMapper mapper) : IAnimeServic
     public async Task ForceDeleteAsync(Guid id, CancellationToken ct = default)
     {
         var anime = await _unitOfWork.Animes.GetByIdAsync(id, ct)
-            ?? throw new ArgumentNullException(nameof(id));
+            ?? throw new KeyNotFoundException(nameof(id));
 
         _unitOfWork.Animes.Delete(anime);
         await _unitOfWork.CompleteAsync(ct);
@@ -81,11 +81,11 @@ public class AnimeService(IUnitOfWork unitOfWork, IMapper mapper) : IAnimeServic
     public async Task SoftDeleteAsync(Guid id, CancellationToken ct = default)
     {
         var current = await _unitOfWork.Animes.GetByIdAsync(id, ct)
-            ?? throw new ArgumentNullException(nameof(id));
+            ?? throw new KeyNotFoundException(nameof(id));
 
         current.IsDeleted = true;
 
-        _unitOfWork.Animes.Delete(current);
+        _unitOfWork.Animes.Update(current);
         await _unitOfWork.CompleteAsync(ct);
     }
 

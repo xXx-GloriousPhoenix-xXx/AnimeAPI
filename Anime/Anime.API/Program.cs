@@ -24,20 +24,6 @@ builder.Services.AddScoped<IWaifuService, WaifuService>();
 builder.Services.AddScoped<IAnimeService, AnimeService>();
 
 // Mapping
-//var loggerFactory = LoggerFactory.Create(builder =>
-//{
-//    builder.AddConsole();
-//});
-
-//var config = new MapperConfiguration(cfg =>
-//{
-//    cfg.AddMaps(AppDomain.CurrentDomain.GetAssemblies());
-//}, loggerFactory);
-
-//var mapper = config.CreateMapper();
-
-//builder.Services.AddSingleton(mapper);
-
 builder.Services.AddAutoMapper(cfg => cfg.AddProfiles([
     new WaifuProfile(),
     new AnimeProfile()
@@ -57,7 +43,6 @@ if (builder.Environment.IsDevelopment())
             Description = "API для управления аниме и вайфу"
         });
 
-        // Включаем XML комментарии
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         if (File.Exists(xmlPath))
@@ -92,3 +77,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
