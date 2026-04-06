@@ -1,5 +1,4 @@
-﻿using Anime.BLL.DTO.Anime;
-using Anime.BLL.DTO.Extra;
+﻿using Anime.BLL.DTO.Extra;
 using Anime.BLL.DTO.Waifu;
 using Anime.BLL.Service.Interface;
 using Anime.DAL.Entity;
