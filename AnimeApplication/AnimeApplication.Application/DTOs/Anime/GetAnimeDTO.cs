@@ -2,7 +2,7 @@
 
 namespace AnimeApplication.Application.DTOs.Anime;
 
-public class GetAnimeDTO : BaseDTO
+public class GetAnimeDTO : BaseAnimeDTO
 {
     public Guid Id { get; set; }
     public ICollection<GetWaifuDTO> Waifus { get; set; } = [];

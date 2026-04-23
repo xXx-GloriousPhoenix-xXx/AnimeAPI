@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Testing/">
+    <Project Path="UnitTesting/UnitTesting.csproj" Id="7b54ffa4-c162-4415-8353-dc8111bce0fe" />
+  </Folder>
   <Project Path="AnimeApplication.API/AnimeApplication.API.csproj" Id="b98adcc7-d197-46dd-a351-18d459ef2698" />
   <Project Path="AnimeApplication.Application/AnimeApplication.Application.csproj" Id="0a629365-4d2e-4138-85d1-c2a431789d9d">
     <BuildDependency Project="AnimeApplication.Domain/AnimeApplication.Domain.csproj" />
