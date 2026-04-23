@@ -1,13 +1,1 @@
-<Solution>
-  <Folder Name="/Tests/">
-    <Project Path="IntegrationTests/IntegrationTests.csproj" Id="5605348f-2ae8-4988-af08-b1eafbb310dc" />
-    <Project Path="UnitTests/UnitTests.csproj" Id="0a97b1e1-c4bc-461a-8739-61735850dd56" />
-  </Folder>
-  <Project Path="Anime.API/Anime.API.csproj">
-    <BuildDependency Project="Anime.BLL/Anime.BLL.csproj" />
-  </Project>
-  <Project Path="Anime.BLL/Anime.BLL.csproj">
-    <BuildDependency Project="Anime.DAL/Anime.DAL.csproj" />
-  </Project>
-  <Project Path="Anime.DAL/Anime.DAL.csproj" />
-</Solution>
+<Solution />
