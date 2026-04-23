@@ -12,6 +12,10 @@
       <Folder Include="Services\" />
     </ItemGroup>
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="16.1.1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
+    </ItemGroup>
+    <ItemGroup>
       <ProjectReference Include="..\AnimeApplication.Domain\AnimeApplication.Domain.csproj" />
     </ItemGroup>
 </Project>

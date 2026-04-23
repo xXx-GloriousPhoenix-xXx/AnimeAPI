@@ -1,3 +1,8 @@
 <Solution>
+  <Project Path="AnimeApplication.API/AnimeApplication.API.csproj" Id="b98adcc7-d197-46dd-a351-18d459ef2698" />
+  <Project Path="AnimeApplication.Application/AnimeApplication.Application.csproj" Id="0a629365-4d2e-4138-85d1-c2a431789d9d">
+    <BuildDependency Project="AnimeApplication.Domain/AnimeApplication.Domain.csproj" />
+  </Project>
   <Project Path="AnimeApplication.Domain/AnimeApplication.Domain.csproj" />
+  <Project Path="AnimeApplication.Infrastructure/AnimeApplication.Infrastructure.csproj" Id="484d7e4f-bdf2-48fc-b208-7ad81f80858c" />
 </Solution>
