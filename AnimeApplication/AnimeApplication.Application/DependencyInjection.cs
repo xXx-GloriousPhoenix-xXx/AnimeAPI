@@ -7,13 +7,13 @@ namespace AnimeApplication.Application;
 
 public static class DependencyInjection {
     public static IServiceCollection AddApplication(this IServiceCollection services) {
-         services.AddAutoMapper(cfg => cfg.AddProfiles([
+        services.AddAutoMapper(cfg => cfg.AddProfiles([
             new WaifuProfile(),
             new AnimeProfile()
         ]));
 
-         services.AddScoped<IWaifuService, WaifuService>();
-         services.AddScoped<IAnimeService, AnimeService>();
+        services.AddScoped<IWaifuService, WaifuService>();
+        services.AddScoped<IAnimeService, AnimeService>();
 
         return services;
     }

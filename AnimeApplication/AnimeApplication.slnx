@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Testing/">
+    <Project Path="IntegrationTesting/IntegrationTesting.csproj" Id="60aa45b0-fc22-4192-aa3e-0ed3a07556f4" />
     <Project Path="UnitTesting/UnitTesting.csproj" Id="7b54ffa4-c162-4415-8353-dc8111bce0fe" />
   </Folder>
   <Project Path="AnimeApplication.API/AnimeApplication.API.csproj" Id="b98adcc7-d197-46dd-a351-18d459ef2698" />
