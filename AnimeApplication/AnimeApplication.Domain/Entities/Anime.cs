@@ -1,0 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AnimeApplication.Domain.Entities;
+
+[Table("animes")]
+public class Anime : BaseEntity
+{
+    [Column("title")]
+    public string Title { get; set; } = string.Empty;
+
+    [Column("release_date", TypeName = "date")]
+    public DateOnly ReleaseDate { get; set; }
+
+    [Column("episode_count")]
+    public int EpisodeCount { get; set; }
+
+    public virtual ICollection<Waifu> Waifus { get; set; } = [];
+}

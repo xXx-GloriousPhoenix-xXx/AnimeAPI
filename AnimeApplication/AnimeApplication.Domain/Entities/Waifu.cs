@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AnimeApplication.Domain.Entities;
+
+[Table("waifus")]
+public class Waifu : BaseEntity {
+    [Column("surname")]
+    public string Surname { get; set; } = string.Empty;
+
+    [Column("name")]
+    public string Name { get; set; } = string.Empty;
+
+    [Column("age")]
+    public int Age { get; set; }
+
+    [Column("anime_id")]
+    public Guid AnimeId { get; set; }
+
+    [ForeignKey(nameof(AnimeId))]
+    public virtual Anime? Anime { get; set; }
+}
